@@ -1,0 +1,37 @@
+<h3> List of customers </h3>
+
+<table class="table table-bordered table-responsive">
+  <tr>
+    <th> ID </th>
+    <th> NAME </th>
+    <th> ADDRESS </th>
+    <th> EMAIL </th>
+    <th> PHONE </th>
+    <th> CREDIT </th>
+    <th> OPTIONS </th>
+  </tr>
+  <tr *ngFor="let customer of customers">
+    <td class="small"> {{customer.id}} </td>
+    <td> {{customer.name}} </td>
+    <td> {{customer.address}} </td>
+    <td> {{customer.email}} </td>
+    <td> {{customer.phone}} </td>
+    <td> {{customer.credit}} </td>
+    <td>
+      <button (click)="goToUpdateCustomer(customer.id)" class="btn btn-info"> 
+        <span class="fa fa-pencil"></span> Update 
+      </button>
+      <button (click)="deleteCustomer(customer.id)" class="btn btn-danger"> 
+        <span class="fa fa-trash"></span> Delete 
+      </button>
+    </td>
+  </tr>
+</table>
+
+<div *ngIf="serviceErrorMessage" class="alert alert-warning">
+  {{serviceErrorMessage}}
+</div>
+
+<button (click)="goToCreateCustomer()" class="btn btn-primary"> 
+  <span class="fa fa-plus"></span> Create customer 
+</button>
